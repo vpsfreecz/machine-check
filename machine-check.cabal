@@ -2,7 +2,7 @@ name:                machine-check
 version:             0.1.0.0
 synopsis:            Linux system checks
 description:         Run checks against a Linux machine, export as Prometheus metrics
-homepage:            https://github.com/sorki/machine-check
+homepage:            https://github.com/vpsfreecz/machine-check
 license:             BSD3
 license-file:        LICENSE
 author:              Richard Marko

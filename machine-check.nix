@@ -14,7 +14,7 @@ mkDerivation {
   ];
   executableHaskellDepends = [ base bytestring pretty-simple ];
   testHaskellDepends = [ attoparsec base hspec text ];
-  homepage = "https://github.com/sorki/machine-check";
+  homepage = "https://github.com/vpsfreecz/machine-check";
   description = "Linux system checks";
   license = stdenv.lib.licenses.bsd3;
 }
