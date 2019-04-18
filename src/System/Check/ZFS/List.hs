@@ -76,7 +76,6 @@ parsePool = do
   tab
   poolHealth <- parsePoolState
   endOfLine
-  endOfInput
   return Pool{..}
 
 parseList :: Parser [Pool]
