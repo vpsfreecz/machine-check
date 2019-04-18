@@ -1,0 +1,20 @@
+  pool: tank
+ state: ONLINE
+status: Errata #4 detected.
+	Existing encrypted datasets contain an on-disk incompatibility
+	which needs to be corrected.
+action: To correct the issue enable the bookmark_v2 feature, backup
+	any existing encrypted datasets to new encrypted datasets,
+	and destroy the old ones. If this pool does not contain any
+	encrypted datasets, simply enable the bookmark_v2 feature.
+   see: http://zfsonlinux.org/msg/ZFS-8000-ER
+  scan: scrub repaired 0B in 0 days 00:32:16 with 0 errors on Mon Apr 15 04:32:18 2019
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	tank        ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sda     ONLINE       0     0     0
+	    sdb     ONLINE       0     0     0
+
+errors: No known data errors

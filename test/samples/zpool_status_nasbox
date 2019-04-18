@@ -1,0 +1,77 @@
+  pool: storage
+ state: DEGRADED
+status: One or more devices could not be used because the label is missing or
+	invalid.  Sufficient replicas exist for the pool to continue
+	functioning in a degraded state.
+action: Replace the device using 'zpool replace'.
+   see: http://zfsonlinux.org/msg/ZFS-8000-4J
+  scan: scrub repaired 0B in 1 days 12:07:41 with 0 errors on Tue Apr 16 16:08:49 2019
+config:
+
+	NAME                                                 STATE     READ WRITE CKSUM
+	storage                                              DEGRADED     0     0     0
+	  raidz2-0                                           ONLINE       0     0     0
+	    pci-0000:03:00.0-sas-0x4433221100000000-lun-0    ONLINE       0     0     0
+	    pci-0000:03:00.0-sas-0x4433221101000000-lun-0    ONLINE       0     0     0
+	    pci-0000:03:00.0-sas-0x4433221102000000-lun-0    ONLINE       0     0     0
+	    pci-0000:03:00.0-sas-0x4433221103000000-lun-0    ONLINE       0     0     0
+	    pci-0000:03:00.0-sas-0x4433221106000000-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0cc-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0cd-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0ce-lun-0    ONLINE       0     0     0
+	  raidz2-1                                           DEGRADED     0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0cf-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d0-lun-0    ONLINE       0     0     0
+	    spare-2                                          DEGRADED     0     0     0
+	      9349682364444871545                            UNAVAIL      0     0     0  was /dev/disk/by-path/pci-0000:06:00.0-sas-0x50030480090ed0d1-lun-0-part1
+	      pci-0000:06:00.0-sas-0x5003048009106e1b-lun-0  ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d2-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d3-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d4-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d5-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d6-lun-0    ONLINE       0     0     0
+	  raidz2-2                                           DEGRADED     0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d7-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d8-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0d9-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0da-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0db-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0dc-lun-0    ONLINE       0     0     0
+	    spare-6                                          DEGRADED     0     0     0
+	      3969929651191935543                            UNAVAIL      0     0     0  was /dev/disk/by-path/pci-0000:06:00.0-sas-0x50030480090ed0dd-lun-0-part1
+	      pci-0000:06:00.0-sas-0x5003048009106e1c-lun-0  ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0de-lun-0    ONLINE       0     0     0
+	  raidz2-3                                           ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0df-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0e0-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0e1-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0e2-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x50030480090ed0e3-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e08-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e09-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0a-lun-0    ONLINE       0     0     0
+	  raidz2-4                                           ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0b-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0c-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0d-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0e-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e0f-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e10-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e11-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e12-lun-0    ONLINE       0     0     0
+	  raidz2-5                                           ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e13-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e14-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e15-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e16-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e17-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e18-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e19-lun-0    ONLINE       0     0     0
+	    pci-0000:06:00.0-sas-0x5003048009106e1a-lun-0    ONLINE       0     0     0
+	logs	
+	  sda5                                               ONLINE       0     0     0
+	spares
+	  pci-0000:06:00.0-sas-0x5003048009106e1b-lun-0      INUSE     currently in use
+	  pci-0000:06:00.0-sas-0x5003048009106e1c-lun-0      INUSE     currently in use
+
+errors: No known data errors

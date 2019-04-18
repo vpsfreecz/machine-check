@@ -1,0 +1,62 @@
+name:                machine-check
+version:             0.1.0.0
+synopsis:            Linux system checks
+description:         Run checks against a Linux machine, export as Prometheus metrics
+homepage:            https://github.com/sorki/machine-check
+license:             BSD3
+license-file:        LICENSE
+author:              Richard Marko
+maintainer:          srk@48.io
+copyright:           2019 Richard Marko
+category:            System
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     System.Check
+                     , System.Check.Runner
+                     , System.Check.Types
+                     , System.Check.ZFS
+                     , System.Check.ZFS.List
+                     , System.Check.ZFS.Status
+                     , System.Check.ZFS.Types
+  build-depends:       base >= 4.7 && < 5
+                     , atomic-write
+                     , attoparsec
+                     , bytestring
+                     , containers
+                     , data-prometheus
+                     , process
+                     , pretty-simple
+                     , text
+  default-language:    Haskell2010
+
+executable machine-check-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , bytestring
+                     , machine-check
+                     , pretty-simple
+  default-language:    Haskell2010
+
+
+test-suite machine-check-tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  other-modules:       ParseSpec
+                       SpecHelper
+  build-depends:       base >= 4.7 && < 5
+                     , attoparsec
+                     , machine-check
+                     , hspec
+                     , text
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/vpsfreecz/machine-check

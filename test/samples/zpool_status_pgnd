@@ -1,0 +1,30 @@
+  pool: vz
+ state: DEGRADED
+status: One or more devices has experienced an unrecoverable error.  An
+	attempt was made to correct the error.  Applications are unaffected.
+action: Determine if the device needs to be replaced, and clear the errors
+	using 'zpool clear' or replace the device with 'zpool replace'.
+   see: http://zfsonlinux.org/msg/ZFS-8000-9P
+  scan: scrub repaired 0B in 0 days 14:11:20 with 0 errors on Mon Apr 15 18:11:22 2019
+config:
+
+	NAME                                           STATE     READ WRITE CKSUM
+	vz                                             DEGRADED     0     0     0
+	  mirror-0                                     DEGRADED     0     0     0
+	    ata-WDC_WD1002FAEX-00Z3A0_WD-WCATRA457884  DEGRADED     0     0     0  too many errors
+	    ata-WDC_WD1002FAEX-00Z3A0_WD-WCATRA461558  ONLINE       0     0     0
+	  mirror-1                                     ONLINE       0     0     0
+	    sde                                        ONLINE       0     0     0
+	    ata-WDC_WD1002FAEX-00Z3A0_WD-WCATRA602993  ONLINE       0     0     0
+	  mirror-2                                     ONLINE       0     0     0
+	    ata-WDC_WD1002FAEX-00Z3A0_WD-WCATRA426579  ONLINE       0     0     0
+	    ata-WDC_WD1002FAEX-00Z3A0_WD-WCATRA461588  ONLINE       0     0     0
+	logs	
+	  mirror-3                                     ONLINE       0     0     0
+	    pci-0000:00:1f.2-scsi-0:0:0:0-part3        ONLINE       0     0     0
+	    pci-0000:00:1f.2-scsi-1:0:0:0-part3        ONLINE       0     0     0
+	cache
+	  pci-0000:00:1f.2-scsi-0:0:0:0-part5          ONLINE       0     0     0
+	  pci-0000:00:1f.2-scsi-1:0:0:0-part5          ONLINE       0     0     0
+
+errors: No known data errors
