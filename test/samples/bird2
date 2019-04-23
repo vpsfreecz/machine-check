@@ -1,0 +1,8 @@
+BIRD 1.6.6 ready.
+name     proto    table    state  since       info
+kernel1  Kernel   master   up     2019-04-05  
+device1  Device   master   up     2019-04-05  
+direct1  Direct   master   up     2019-04-05  
+bgp1     BGP      master   start  14:00:07    OpenSent      BGP Error: Hold timer expired
+bgp2     BGP      master   up     14:00:24    Established   
+

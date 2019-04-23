@@ -1,6 +1,7 @@
 module SpecHelper
     ( module Test.Hspec
     , module System.Check
+    , module System.Check.Bird
     , module System.Check.ZFS
     , module System.Check.ZFS.List
     , module System.Check.ZFS.Status
@@ -9,6 +10,7 @@ module SpecHelper
 
 import Test.Hspec
 import System.Check
+import System.Check.Bird
 import System.Check.ZFS
 import System.Check.ZFS.List
 import System.Check.ZFS.Status

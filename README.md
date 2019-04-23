@@ -41,8 +41,8 @@ zpool_list_success 1.0
 Current checks:
  * zpool list (capacity, health)
  * zpool status (health, status, erros)
+ * birdc(6) show protocols
 
 Future checks:
- * birdc(6) status
  * ping
  * dns
