@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell   #-}
 
-module ParseSpec where
+module ZpoolParseSpec where
 
 import SpecHelper
 import Control.Monad
