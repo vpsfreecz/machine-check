@@ -34,7 +34,7 @@ instance ToMetrics Pool where
     let baseMetric' = baseMetric & label "name" (B.pack . T.unpack $ poolName)
     addMetric
       (baseMetric' & sub "healt" & desc "pool health")
-      (Gauge $ fromIntegral $ fromEnum poolHealth)
+      (enumToGauge poolHealth)
 
     addMetric
       (baseMetric' & sub "capacity" & desc "pool capacity percentage")

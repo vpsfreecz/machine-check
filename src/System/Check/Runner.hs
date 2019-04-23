@@ -34,7 +34,7 @@ runCheck Check{..} = do
       let res = parseOnly checkParser (T.pack stdout)
       addMetric
         (checkMetric & sub "parse" & sub "success" & desc "parsing successful")
-        (Gauge $ fromIntegral $ eitherExitCode res)
+        (eitherToGauge res)
 
       case res of
         Left err -> logError $ B.pack err

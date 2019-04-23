@@ -10,7 +10,7 @@ module System.Check.ZFS.Status (
 
 import Control.Monad
 import Control.Applicative hiding (empty)
-import Data.Maybe (isJust)
+import Data.Maybe (isNothing)
 import Data.Text (Text)
 import Data.Attoparsec.Text hiding (space, take)
 import Data.Function ((&))
@@ -43,15 +43,15 @@ instance ToMetrics Status where
     let baseMetric' = baseMetric & label "name" (B.pack . T.unpack $ name)
     addMetric
       (baseMetric' & sub "healt" & desc "pool health")
-      (Gauge $ fromIntegral $ fromEnum state)
+      (enumToGauge state)
 
     addMetric
       (baseMetric' & sub "errors" & desc "pool errors")
-      (Gauge $ fromIntegral $ fromEnum $ errors /= "No known data errors")
+      (goodWhen $ errors == "No known data errors")
 
     addMetric
       (baseMetric' & sub "status_reported" & desc "pool reports status if 1")
-      (Gauge $ fromIntegral $ fromEnum $ isJust status)
+      (goodWhen $ isNothing status)
 
 zpoolStatusCheck :: Check Status
 zpoolStatusCheck = Check {
