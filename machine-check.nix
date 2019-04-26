@@ -1,6 +1,6 @@
 { mkDerivation, atomic-write, attoparsec, base, bytestring
-, containers, data-prometheus, hspec, pretty-simple, process
-, stdenv, text
+, config-ini, containers, data-prometheus, dns, hspec, iproute
+, pretty-simple, process, stdenv, text
 }:
 mkDerivation {
   pname = "machine-check";
@@ -9,8 +9,8 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    atomic-write attoparsec base bytestring containers data-prometheus
-    pretty-simple process text
+    atomic-write attoparsec base bytestring config-ini containers
+    data-prometheus dns iproute pretty-simple process text
   ];
   executableHaskellDepends = [ base bytestring pretty-simple ];
   testHaskellDepends = [ attoparsec base hspec text ];

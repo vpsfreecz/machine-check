@@ -4,6 +4,7 @@
 
 module System.Check.Runner (
     runCheck
+  , runNative
   , dumpChecks
   , saveChecks
   ) where
@@ -21,6 +22,9 @@ import Data.Prometheus
 import System.AtomicWrite.Writer.ByteString
 import System.Check.Types
 
+runCheck :: ToMetrics a
+         => Check a
+         -> IO B.ByteString
 runCheck Check{..} = do
   (exitcode, stdout, stderr) <- flip readCreateProcessWithExitCode "" $
     shell checkShellCommand
@@ -39,6 +43,17 @@ runCheck Check{..} = do
       case res of
         Left err -> logError $ B.pack err
         Right x -> toMetrics checkMetric x
+
+-- |Run native check (Haskell function applied to config)
+-- and generate metrics of its results
+--
+-- `name` is the start of the metric name
+runNative :: (Monad m, ToMetrics a)
+          => B.ByteString
+          -> (t -> m a)
+          -> t -> m B.ByteString
+runNative name fn x = fn x >>= runMetrics . toMetrics (metric name)
+
 
 saveChecks :: [B.ByteString] -> IO ()
 saveChecks = atomicWriteFile "/run/metrics/machine-check.prom" . B.concat

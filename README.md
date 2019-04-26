@@ -17,7 +17,21 @@ Designed to be run periodically via cron,
 by default `machine-check` creates `/run/metrics/machine-check.prom`
 containing results of all checks.
 
-Output sample:
+Configuration
+-------------
+
+It is possible to configure certain checks like DNS check
+by providing a configuration file via environment variable:
+
+```bash
+MCCFG=./sample.config ./result/bin/machine-check
+```
+
+Check out [config.sample](config.sample) in this repository
+for a list of possible options.
+
+Output sample
+-------------
 
 ```
 # HELP zpool_status_errors pool errors
@@ -44,7 +58,7 @@ Current checks:
  * zpool list (capacity, health)
  * zpool status (health, status, erros)
  * birdc(6) show protocols
+ * dns
 
 Future checks:
  * ping
- * dns

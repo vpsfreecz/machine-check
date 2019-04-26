@@ -16,9 +16,11 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     System.Check
+                     , System.Check.Config
                      , System.Check.Runner
                      , System.Check.Types
                      , System.Check.Bird
+                     , System.Check.DNS
                      , System.Check.ZFS
                      , System.Check.ZFS.List
                      , System.Check.ZFS.Status
@@ -27,8 +29,11 @@ library
                      , atomic-write
                      , attoparsec
                      , bytestring
+                     , config-ini
                      , containers
                      , data-prometheus
+                     , dns
+                     , iproute
                      , process
                      , pretty-simple
                      , text
