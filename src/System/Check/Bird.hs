@@ -45,7 +45,7 @@ instance ToMetrics Bird where
   toMetrics baseMetric Bird{..} = do
     forM_ protocols $ \ProtocolInfo{..} -> do
       addMetric
-        (baseMetric & label "name" (B.pack . T.unpack $ name))
+        (baseMetric & label "name" (B.pack . T.unpack $ name) & desc "protocol status, zero is ok")
         (enumToGauge state)
 
 birdCheck :: Check Bird
