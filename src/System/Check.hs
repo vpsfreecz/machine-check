@@ -11,7 +11,7 @@ runAll :: Bool -> IO ()
 runAll dryRun = do
   cfg <- parseConfig
 
-  res <- sequence ([
+  res <- renderChecks <$> sequence ([
       runCheck birdCheck
     , runCheck bird6Check
     , runCheck zpoolListCheck

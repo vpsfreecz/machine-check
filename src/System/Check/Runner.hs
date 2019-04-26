@@ -5,6 +5,7 @@
 module System.Check.Runner (
     runCheck
   , runNative
+  , renderChecks
   , dumpChecks
   , saveChecks
   ) where
@@ -14,6 +15,7 @@ import System.Process
 import GHC.IO.Exception (ExitCode(..))
 import qualified Data.ByteString.Char8 as B
 import qualified Data.Text             as T
+import qualified Data.Map.Strict       as M
 import Data.Attoparsec.Text (parseOnly)
 import Data.Function ((&))
 
@@ -24,12 +26,12 @@ import System.Check.Types
 
 runCheck :: ToMetrics a
          => Check a
-         -> IO B.ByteString
+         -> IO MetricState
 runCheck Check{..} = do
   (exitcode, stdout, stderr) <- flip readCreateProcessWithExitCode "" $
     shell checkShellCommand
 
-  runMetrics $ do
+  execMetrics $ do
     addMetric
       (checkMetric & sub "success" & desc "process exitcode")
       (Gauge $ fromExit exitcode)
@@ -51,15 +53,20 @@ runCheck Check{..} = do
 runNative :: (Monad m, ToMetrics a)
           => B.ByteString
           -> (t -> m a)
-          -> t -> m B.ByteString
-runNative name fn x = fn x >>= runMetrics . toMetrics (metric name)
+          -> t -> m MetricState
+runNative name fn x = fn x >>= execMetrics . toMetrics (metric name)
 
+renderChecks :: [MetricState] -> B.ByteString
+renderChecks states = B.concat [
+    prettyMetrics (M.unions $ map metrics $ states)
+  , B.unlines (concatMap errors states)
+  ]
 
-saveChecks :: [B.ByteString] -> IO ()
-saveChecks = atomicWriteFile "/run/metrics/machine-check.prom" . B.concat
+saveChecks :: B.ByteString -> IO ()
+saveChecks = atomicWriteFile "/run/metrics/machine-check.prom"
 
-dumpChecks :: [B.ByteString] -> IO ()
-dumpChecks = B.putStr . B.concat
+dumpChecks :: B.ByteString -> IO ()
+dumpChecks = B.putStr
 
 fromExit :: ExitCode -> Double
 fromExit ExitSuccess = 0
