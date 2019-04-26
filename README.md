@@ -9,6 +9,8 @@ Usage
 ```bash
 nix build
 ./result/bin/machine-check
+# dry run - don't try to write to /run/metrics, just dump to stdout
+./result/bin/machine-check dry-run
 ```
 
 Designed to be run periodically via cron,
