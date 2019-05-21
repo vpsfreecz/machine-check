@@ -37,9 +37,9 @@ Output sample
 # HELP zpool_status_errors pool errors
 # TYPE zpool_status_errors gauge
 zpool_status_errors{name="tank"} 0.0
-# HELP zpool_status_healt pool health
-# TYPE zpool_status_healt gauge
-zpool_status_healt{name="tank"} 0.0
+# HELP zpool_status_health pool health
+# TYPE zpool_status_health gauge
+zpool_status_health{name="tank"} 0.0
 # HELP zpool_status_parse_success parsing successful
 # TYPE zpool_status_parse_success gauge
 zpool_status_parse_success 0.0

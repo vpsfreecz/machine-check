@@ -42,7 +42,7 @@ instance ToMetrics Status where
   toMetrics baseMetric Status{..} = do
     let baseMetric' = baseMetric & label "name" (B.pack . T.unpack $ name)
     addMetric
-      (baseMetric' & sub "healt" & desc "pool health")
+      (baseMetric' & sub "health" & desc "pool health")
       (enumToGauge state)
 
     addMetric
